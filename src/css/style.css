@@ -202,6 +202,10 @@ button {
   grid-column: 3;
 }
 
+.cart-card__total{
+  grid-row: 3;
+  grid-column: 2;
+}
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
