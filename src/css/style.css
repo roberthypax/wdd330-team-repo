@@ -202,9 +202,16 @@ button {
   grid-column: 3;
 }
 
-.cart-card__total{
+.cart-card__total {
   grid-row: 3;
   grid-column: 2;
+}
+
+.discounted__price{
+  text-decoration: line-through;
+}
+.discount{
+  color: red;
 }
 @media screen and (min-width: 500px) {
   body {
