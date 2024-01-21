@@ -41,7 +41,7 @@ fetch('../json/tents.json')
       // Object found, do something with it
       let discount = document.querySelector(".discount__price");
       let discountPercentage = 25;
-      let discountSpan = `<span class="discount">-${discountPercentage}%  </span class="cost">${(specificObject.FinalPrice - (specificObject.FinalPrice*discountPercentage/100)).toFixed(2)}<span></span>`;
+      let discountSpan = `<span class="discount">-${discountPercentage}%  </span class="cost">$${(specificObject.FinalPrice - (specificObject.FinalPrice*discountPercentage/100)).toFixed(2)}<span></span>`;
 
       // Insert the HTML content into the discount element
       if (discount) {
@@ -58,7 +58,7 @@ fetch('../json/tents.json')
   .catch(error => {
     console.error('Error fetching the JSON file:', error);
   });
-  
+
 // add to cart button event handler
 async function addToCartHandler(e) {
   const product = await dataSource.findProductById(e.target.dataset.id);
