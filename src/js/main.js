@@ -1,6 +1,5 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
-import Alert from './Alert.js';
 
 window.onload = () => {
     const alert = new Alert();
