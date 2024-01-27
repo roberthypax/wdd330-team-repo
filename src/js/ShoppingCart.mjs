@@ -3,6 +3,7 @@ import { getLocalStorage } from "./utils.mjs";
 
 function CardTemplate(item) {
     return `<li class="cart-card divider">
+    <div class="card__icons">✖ 🞦 ⛔</div>
     <a href="#" class="cart-card__image">
       <img
         src="${item.Image}"
@@ -15,6 +16,7 @@ function CardTemplate(item) {
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
     <p class="cart-card__quantity">qty: ${item.quantity}</p>
     <p class="cart-card__price">$${item.FinalPrice}</p>
+    <p class="cart-card__total">Something</p>
   </li>`;
 }
 
