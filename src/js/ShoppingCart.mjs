@@ -1,5 +1,6 @@
 import { renderListWithTemplate } from "./utils.mjs";
 import { getLocalStorage } from "./utils.mjs";
+import { setLocalStorage } from "./utils.mjs";
 
 function CardTemplate(item) {
     // Find the "quantity" property in each object
@@ -10,10 +11,6 @@ function CardTemplate(item) {
     if (quantity >= 1) {
       // If quantity is equal to 1, add specific icons to the "icons" variable
       icons += '<li><button class="cart__reduce">✖</button></li><li><button class="cart__add">🞦</button></li>';
-    } else {
-      // If quantity is equal to 0, remove the object from cartItems
-      cartItems.splice(i, 1);//THIS MIGHT NOT WORK
-      i--; // Adjust the loop counter after removing an element
     }
     return `<li class="cart-card divider">
     <ul class="cart-card__icons">${icons}</ul>
@@ -30,6 +27,7 @@ function CardTemplate(item) {
     <p class="cart-card__quantity">qty: ${item.quantity}</p>
     <p class="cart-card__price">$${item.FinalPrice}</p>
     <p class="cart-card__total">Something</p>
+    <p class="item__id" hidden>${item.Id}</p>
   </li>`;
 }
 
@@ -44,10 +42,55 @@ export default class ShoppingCart {
     async init() {
         this.render();
     }
-
+    addOrRemove(items) {
+      const addBtns = document.querySelectorAll(".cart__add");
+      const removeBtns = document.querySelectorAll(".cart__reduce");
+    
+      addBtns.forEach(addBtn =>{
+        addBtn.addEventListener("click", () => {
+        console.log("Add button clicked");
+        const cardId = addBtn.parentElement.parentElement.parentElement.querySelector(".item__id").textContent;
+        const item = items.find(prod => prod.Id === cardId);
+        let quantity = item.quantity + 1;
+        item.quantity = quantity;
+        // Save the updated cart items to local storage
+        setLocalStorage("so-cart", items);
+        console.log(quantity);
+        // Render the updated cart items
+        this.render();
+        });
+      })
+    
+      removeBtns.forEach(removeBtn =>{
+        removeBtn.addEventListener("click", () => {
+        console.log("Remove button clicked");
+        const cardId = removeBtn.parentElement.parentElement.parentElement.querySelector(".item__id").textContent;
+        //get product by id from LocalStorage and change it quantity
+        const item = items.find(prod => prod.Id === cardId);
+        let quantity = item.quantity - 1;
+        item.quantity = quantity;
+        // Save the updated cart items to local storage
+        setLocalStorage("so-cart", items);
+        console.log(quantity);
+        // If quantity is equal to 0, remove the object from cartItems
+        if (quantity === 0) {
+          const newCart = items.filter(item => item.Id !== cardId);
+          setLocalStorage("so-cart", newCart);
+        }
+        // Render the updated cart items
+        this.render();
+        });
+      })
+        // If quantity is equal to 0, remove the object from cartItems
+        // const newCart = getLocalStorage("so-cart").filter(item => item.quantity !== 0);
+        // setLocalStorage("so-cart", newCart);
+        // this.render; 
+    }
     render() {
         renderListWithTemplate(CardTemplate, this.element, this.cartItems, "afterBegin", true);
         document.querySelector(".cart-total").innerHTML = "Total $" + this.cartTotal;
         console.log(this.cartItems);
+        // Call the function to set up the event listeners
+        this.addOrRemove(this.cartItems);
     }
 }
