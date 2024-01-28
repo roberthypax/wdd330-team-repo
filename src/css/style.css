@@ -169,7 +169,7 @@ button {
 /* Start cart list card styles */
 .cart-card {
   display: grid;
-  grid-template-columns: 25% auto 15%;
+  grid-template-columns: 25% auto 20%;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
@@ -199,7 +199,7 @@ button {
 
 .cart-card__price {
   grid-row: 3/4;
-  grid-column: 2/3;
+  grid-column: 3/4;
 }
 .cart-card__icons{
   grid-row: 1/2;
@@ -214,7 +214,7 @@ button {
 }
 .cart-card__total{
   grid-row: 3/4;
-  grid-column: 3/4;
+  grid-column: 2/3;
 }
 
 .cart-total {
