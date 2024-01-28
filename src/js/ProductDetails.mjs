@@ -36,6 +36,24 @@ export default class ProductDetails {
     addProductToCart() {
         let product = this.product; //Get product
         let previousCart = JSON.parse(localStorage.getItem("so-cart")); //Get cart from local storage
+        /*  // Get current cart array
+            let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+            // Check if product already in cart
+            let existingItem = cart.find(item => {
+              return item.Id === product.Id; 
+            });
+
+            if (existingItem) {
+              // Increment quantity of existing item
+              existingItem.quantity++;
+            } else {
+              // Add new product to cart 
+              product.quantity = 1;
+              cart.push(product);
+            }
+            // Save updated cart array
+            //localStorage.setItem("so-cart", JSON.stringify(cart));
+            setLocalStorage("so-cart", cart);*/
         let cartTotal = parseFloat(localStorage.getItem("so-cart-total")); //Get cart total from local storage
         if (!cartTotal) {
           cartTotal = 0;
