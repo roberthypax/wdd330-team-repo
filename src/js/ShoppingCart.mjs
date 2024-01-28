@@ -74,17 +74,16 @@ export default class ShoppingCart {
         console.log(quantity);
         // If quantity is equal to 0, remove the object from cartItems
         if (quantity === 0) {
-          const newCart = items.filter(item => item.Id !== cardId);
-          setLocalStorage("so-cart", newCart);
+          location.reload()
         }
         // Render the updated cart items
         this.render();
         });
       })
         // If quantity is equal to 0, remove the object from cartItems
-        // const newCart = getLocalStorage("so-cart").filter(item => item.quantity !== 0);
-        // setLocalStorage("so-cart", newCart);
-        // this.render; 
+        const newCart = getLocalStorage("so-cart").filter(item => item.quantity !== 0);
+        setLocalStorage("so-cart", newCart);
+        this.render; 
     }
     render() {
         renderListWithTemplate(CardTemplate, this.element, this.cartItems, "afterBegin", true);
