@@ -37,7 +37,6 @@ export function renderListWithTemplate(templateFn, parentElement, data, position
 
 async function renderWithTemplate(element, data, position = "afterBegin") {
 //Render the template using just javascript with no libraries
-  console.log(data);
   element.innerHTML = data; 
 }
 
