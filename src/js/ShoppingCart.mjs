@@ -30,25 +30,13 @@ function CardTemplate(item) {
     <p class="item__id" hidden>${item.Id}</p>
   </li>`;
 }
- 
-function computeTotal(){
-  let cart = getLocalStorage("so-cart");
-  // Initialize total outside loop
-  let overAllPayment = 0;
-  cart.forEach(item => {
-    const totalForSet = (item.FinalPrice * item.quantity).toFixed(2);
-    console.log(totalForSet);
-    // Add to total each iteration
-    overAllPayment += parseFloat(totalForSet);
-  })
-  console.log(overAllPayment);
-}
 
 export default class ShoppingCart {
     constructor() {
         this.cartItems = getLocalStorage("so-cart");
-        //this.cartTotal = getLocalStorage("so-cart-total");
+        this.overAllPayment = getLocalStorage("so-cart-total");
         this.element = document.querySelector(".product-list");
+        this.total = document.querySelector(".cart__total");
         this.render();
     }
 
@@ -68,7 +56,14 @@ export default class ShoppingCart {
         item.quantity = quantity;
         // Save the updated cart items to local storage
         setLocalStorage("so-cart", items);
-        console.log(quantity);
+        let overAllPayment = 0;
+        items.forEach(item => {
+          const totalForSet = (item.FinalPrice * item.quantity).toFixed(2);
+          overAllPayment += parseFloat(totalForSet);
+        });
+        setLocalStorage("so-cart-total", (overAllPayment).toFixed(2)); 
+        this.overAllPayment = (overAllPayment).toFixed(2)
+        console.log(overAllPayment);
         // Render the updated cart items
         this.render();
         });
@@ -84,7 +79,14 @@ export default class ShoppingCart {
         item.quantity = quantity;
         // Save the updated cart items to local storage
         setLocalStorage("so-cart", items);
-        console.log(quantity);
+        let overAllPayment = 0;
+        items.forEach(item => {
+          const totalForSet = (item.FinalPrice * item.quantity).toFixed(2);
+          overAllPayment += parseFloat(totalForSet);
+        });
+        setLocalStorage("so-cart-total", (overAllPayment).toFixed(2)); 
+        this.overAllPayment = (overAllPayment).toFixed(2)
+        console.log(overAllPayment);
         // If quantity is equal to 0, remove the object from cartItems
         if (quantity === 0) {
           location.reload()
@@ -104,6 +106,7 @@ export default class ShoppingCart {
         //console.log(this.cartItems);
         // Call the function to set up the event listeners
         this.addOrRemove(this.cartItems);
-        computeTotal();
+        console.log(this.overAllPayment);
+        this.total.innerText = `Total Price: $${this.overAllPayment}`;  
     }
 }

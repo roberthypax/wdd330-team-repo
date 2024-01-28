@@ -217,7 +217,7 @@ button {
   grid-column: 2/3;
 }
 
-.cart-total {
+.cart__total {
   display: flex;
   justify-content: space-between;
   padding: 0.5em;
