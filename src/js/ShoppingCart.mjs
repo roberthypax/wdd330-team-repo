@@ -25,16 +25,29 @@ function CardTemplate(item) {
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
     <p class="cart-card__quantity">qty: ${item.quantity}</p>
-    <p class="cart-card__price">$${item.FinalPrice}</p>
-    <p class="cart-card__total">Something</p>
+    <p class="cart-card__price">Item Price: $${item.FinalPrice}</p>
+    <p class="cart-card__total">Total Price: $${(item.FinalPrice*item.quantity).toFixed(2)}</p>
     <p class="item__id" hidden>${item.Id}</p>
   </li>`;
+}
+// Initialize total outside loop
+let overAllPayment = 0; 
+function computeTotal(){
+  let cart = getLocalStorage("so-cart");
+  
+  cart.forEach(item => {
+    const totalForSet = (item.FinalPrice * item.quantity).toFixed(2);
+    // Add to total each iteration
+    overAllPayment += totalForSet;
+    console.log(overAllPayment);
+  })
+
 }
 
 export default class ShoppingCart {
     constructor() {
         this.cartItems = getLocalStorage("so-cart");
-        this.cartTotal = getLocalStorage("so-cart-total");
+        //this.cartTotal = getLocalStorage("so-cart-total");
         this.element = document.querySelector(".product-list");
         this.render();
     }
@@ -87,9 +100,10 @@ export default class ShoppingCart {
     }
     render() {
         renderListWithTemplate(CardTemplate, this.element, this.cartItems, "afterBegin", true);
-        document.querySelector(".cart-total").innerHTML = "Total $" + this.cartTotal;
-        console.log(this.cartItems);
+        //document.querySelector(".cart-total").innerHTML = "Total $" + this.cartTotal;
+        //console.log(this.cartItems);
         // Call the function to set up the event listeners
         this.addOrRemove(this.cartItems);
+        computeTotal();
     }
 }
