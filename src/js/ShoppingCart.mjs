@@ -30,18 +30,18 @@ function CardTemplate(item) {
     <p class="item__id" hidden>${item.Id}</p>
   </li>`;
 }
-// Initialize total outside loop
-let overAllPayment = 0; 
+ 
 function computeTotal(){
   let cart = getLocalStorage("so-cart");
-  
+  // Initialize total outside loop
+  let overAllPayment = 0;
   cart.forEach(item => {
     const totalForSet = (item.FinalPrice * item.quantity).toFixed(2);
+    console.log(totalForSet);
     // Add to total each iteration
-    overAllPayment += totalForSet;
-    console.log(overAllPayment);
+    overAllPayment += parseFloat(totalForSet);
   })
-
+  console.log(overAllPayment);
 }
 
 export default class ShoppingCart {
