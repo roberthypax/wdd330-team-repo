@@ -7,4 +7,4 @@ const Pdata = new ProductData(category);
 const element = document.getElementById("products");
 const Plist = new ProductListing(Pdata, category, element);
 Plist.init();
-console.log(category);
+// console.log(category);
