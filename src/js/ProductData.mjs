@@ -19,7 +19,7 @@ export default class ProductData {
   //     .then((data) => data);
   //}
   async getData(category) {
-    const response = await fetch(`${baseURL}products/search/${category}`);
+    const response = await fetch(`${baseURL}/products/search/${category}`);
     const data = await convertToJson(response);
     return data.Result;
   }
@@ -27,7 +27,7 @@ export default class ProductData {
   async findProductById(id) {
     // const products = await this.getData();
     // return products.find((item) => item.Id === id);
-    const response = await fetch(`${baseURL}product/${id}`)
+    const response = await fetch(`${baseURL}/product/${id}`)
     const data = await convertToJson(response);
     return data.Result;
   }
