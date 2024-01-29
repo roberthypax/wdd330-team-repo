@@ -16,7 +16,7 @@ function CardTemplate(item) {
     <ul class="cart-card__icons">${icons}</ul>
     <a href="#" class="cart-card__image">
       <img
-        src="${item.Image}"
+        src="${item.Images.PrimarySmall}"
         alt="${item.Name}"
       />
     </a>
@@ -49,7 +49,7 @@ export default class ShoppingCart {
     
       addBtns.forEach(addBtn =>{
         addBtn.addEventListener("click", () => {
-        console.log("Add button clicked");
+        //console.log("Add button clicked");
         const cardId = addBtn.parentElement.parentElement.parentElement.querySelector(".item__id").textContent;
         const item = items.find(prod => prod.Id === cardId);
         let quantity = item.quantity + 1;
@@ -63,7 +63,6 @@ export default class ShoppingCart {
         });
         setLocalStorage("so-cart-total", (overAllPayment).toFixed(2)); 
         this.overAllPayment = (overAllPayment).toFixed(2)
-        console.log(overAllPayment);
         // Render the updated cart items
         this.render();
         });
@@ -71,7 +70,7 @@ export default class ShoppingCart {
     
       removeBtns.forEach(removeBtn =>{
         removeBtn.addEventListener("click", () => {
-        console.log("Remove button clicked");
+        //console.log("Remove button clicked");
         const cardId = removeBtn.parentElement.parentElement.parentElement.querySelector(".item__id").textContent;
         //get product by id from LocalStorage and change it quantity
         const item = items.find(prod => prod.Id === cardId);
@@ -86,7 +85,6 @@ export default class ShoppingCart {
         });
         setLocalStorage("so-cart-total", (overAllPayment).toFixed(2)); 
         this.overAllPayment = (overAllPayment).toFixed(2)
-        console.log(overAllPayment);
         // If quantity is equal to 0, remove the object from cartItems
         if (quantity === 0) {
           location.reload()
@@ -106,7 +104,6 @@ export default class ShoppingCart {
         //console.log(this.cartItems);
         // Call the function to set up the event listeners
         this.addOrRemove(this.cartItems);
-        console.log(this.overAllPayment);
-        this.total.innerText = `Total Price: $${(this.overAllPayment).toFixed(2)}`;  
+        this.total.innerText = `Total Price: $${(parseFloat(this.overAllPayment)).toFixed(2)}`;  
     }
 }
