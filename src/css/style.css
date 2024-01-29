@@ -225,34 +225,15 @@ button {
   font-weight: bold;
 }
 
-.product-grid{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  list-style: none;
-  width: 100%;
-  padding: 0;
-}
-
-.product-grid li{
-  padding: 0.5em;
-  width: 100%;
-} 
-
 .product-grid a{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.product-grid a{
-  text-decoration: none;
-  color: black;
-}
-
 .product-grid img{
   width: 90px;
-}
-
+} 
 
 @media screen and (min-width: 500px) {
   body {
