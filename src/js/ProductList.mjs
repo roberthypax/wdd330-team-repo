@@ -22,7 +22,7 @@ export default class ProductListing {
   }
 
   async init() {
-    const products = await this.datasource.getData();
+    const products = await this.datasource.getData(this.category);
     
     renderListWithTemplate(
       CardTemplate,

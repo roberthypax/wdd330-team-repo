@@ -22,9 +22,9 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-export function getParams() {
+export function getParams(lookup) {
   const params = new URLSearchParams(window.location.search);
-  return params.get("product");
+  return params.get(lookup);
 }
 
 export function renderListWithTemplate(templateFn, parentElement, data, position = "afterBegin",clear = false) {
