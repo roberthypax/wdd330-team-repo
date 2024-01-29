@@ -33,19 +33,7 @@ export default class ProductDetails {
             .getElementById("addToCart")
             .addEventListener("click", this.addProductToCart.bind(this));
     }
-    // computeTotalPrice(){
-    //   let cart = getLocalStorage("so-cart");
-    //   // Initialize total outside loop
-    //   let overAllPayment = 0;
-    //   cart.forEach(item => {
-    //     const totalForSet = (item.FinalPrice * item.quantity).toFixed(2);
-    //     console.log(totalForSet);
-    //     // Add to total each iteration
-    //     overAllPayment += parseFloat(totalForSet);
-    //   })
-    //   setLocalStorage("so-cart-total", (overAllPayment).toFixed(2));
-    //   console.log(overAllPayment);
-    // }
+    
     addProductToCart() {
         let product = this.product; //Get product
         let cart = getLocalStorage("so-cart") || []; //Get cart from local storage

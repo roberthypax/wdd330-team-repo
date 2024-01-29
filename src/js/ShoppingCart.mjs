@@ -107,6 +107,6 @@ export default class ShoppingCart {
         // Call the function to set up the event listeners
         this.addOrRemove(this.cartItems);
         console.log(this.overAllPayment);
-        this.total.innerText = `Total Price: $${this.overAllPayment}`;  
+        this.total.innerText = `Total Price: $${(this.overAllPayment).toFixed(2)}`;  
     }
 }
