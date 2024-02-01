@@ -1,4 +1,5 @@
 import ExternalServices from "./ExternalServices.mjs";
+import { alertMessage } from "./utils.mjs";
 function packageItems(items) {
     let orderPackage = [];
     //map the items to the orderPackage array
@@ -68,6 +69,7 @@ export default class CheckoutProcess{
 
 
     async submitOrder(){
+        try {
         // Check if all inputs are valid
         if (!document.querySelector(".checkout-form").checkValidity()) {
             alert("Please fill out all fields");
@@ -102,6 +104,12 @@ export default class CheckoutProcess{
         } else {
             console.log("Error");
         }
+        await this.placeOrder();
+    }   catch (err) {   
+        for (let message in err.message){
+            alertMessage(err.message[message], "danger");
+        }
+    }
     }
 }
 

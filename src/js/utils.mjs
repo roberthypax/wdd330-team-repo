@@ -68,3 +68,29 @@ export async function loadTemplate(path) {
   const template = await res.text();
   return template;
 }
+
+export function alertMessage(message, type = "success", scroll = true) {
+
+  const alert = document.createElement("div");
+  alert.classList.add("alert", `alert-${type}`);
+  alert.innerHTML = message;
+  // remove on click
+  alert.addEventListener("click", () => {
+    alert.remove();
+  });
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
+  qs("main").insertAdjacentElement("afterBegin", alert);
+  setTimeout(() => {
+    alert.remove();
+  }, 3000);
+
+}
+
+function alertRemove() {
+  const alert = qs(".alert");
+  if (alert) {
+    alert.remove();
+  }
+}

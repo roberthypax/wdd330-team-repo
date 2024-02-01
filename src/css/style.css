@@ -365,3 +365,32 @@ footer {
   font-size: var(--large-font);
   font-weight: bolder;
 }
+
+.alert {
+  padding: 0.5em;
+  float: center;
+  margin: 0.5em 0;
+  background-color: #ff9d98;
+  color: red;
+  font-size: var(--large-font);
+  text-align: center;
+  width: 40%;
+  margin: auto;
+  border-radius: 5px;
+  animation: float-in 0.5s ease-in-out;
+  margin-top: 1%;
+
+}
+ /* Alert float in animation */
+@keyframes float-in {
+  0% {
+    transform: translateY(-200px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.alert--success {
+  background-color: #8aff7b;
+  color: green;
+}
