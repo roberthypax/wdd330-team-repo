@@ -1,3 +1,4 @@
+import { doc } from "prettier";
 import { setLocalStorage } from "./utils.mjs";
 
 function productTemplate(product) {
@@ -16,6 +17,7 @@ function productTemplate(product) {
     </p>
     <div class="product-detail__add">
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
+      <button id="wishlist" data-id="${product.Id}">Add to Wishlist</button>
     </div></section>`;
   }
 export default class ProductDetails {
@@ -32,6 +34,7 @@ export default class ProductDetails {
         document
             .getElementById("addToCart")
             .addEventListener("click", this.addProductToCart.bind(this));
+        document.getElementById("wishlist").addEventListener("click", this.addToWishlist.bind(this));
     }
 
     addProductToCart() {
@@ -84,6 +87,28 @@ export default class ProductDetails {
         document.querySelector(".cart-count").innerHTML = parseInt(cartCount); //Set cart count
       }
       // add to cart button event handler
+
+      addToWishlist() {
+        let product = this.product; //Get product
+        let previousWishlist = JSON.parse(localStorage.getItem("so-wishlist")); //Get wishlist from local storage
+        if (!previousWishlist) {
+          //If wishlist is empty
+          previousWishlist = [];
+        }
+        let len = previousWishlist.length; //Get length of wishlist
+        if (len > 0) {
+          //If wishlist is not empty
+          for (let i = 0; i < len; i++) {
+            //Loop through wishlist
+            if (previousWishlist[i].Name === product.Name) {
+              //If product is already in wishlist
+              return; //Exit function
+            }
+          }
+        }
+        previousWishlist.push(product); //Push product to wishlist
+        setLocalStorage("so-wishlist", previousWishlist); //Set local storage to wishlist
+      }
 
     render(selector) {
         const element = document.querySelector(selector);
