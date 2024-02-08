@@ -291,11 +291,24 @@ form {
     min-width: 300px;
   }
 
-  /* tr{
-    background-color: blue;
-    border-bottom: 4px solid black;
-    margin: 5px;
-  } */
+  .checkout-summary{
+    border: 10px solid var(--dark-grey);
+    width: fit-content;
+    padding: 1em;
+    list-style: none;
+    margin: 20px auto;
+  }
+  .checkout-summary span{
+    font-weight: bold;
+  }
+
+  .checkout-summary li{
+    padding: .5em;
+    border-bottom: 1px solid black ;
+  }
+  .checkout-summary > li:last-of-type{
+    border-bottom: 2px dashed black;
+  }
 
 @media screen and (min-width: 500px) {
   body {
@@ -308,6 +321,11 @@ form {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
+  }
+  .checkout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

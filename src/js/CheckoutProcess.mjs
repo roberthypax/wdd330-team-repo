@@ -50,7 +50,7 @@ export default class CheckoutProcess {
           return total + currentItem.quantity;
         }, 0);
         const itemCount = document.querySelector(".item__count")
-        itemCount.innerText = `${totalQuantity} Items`;
+        itemCount.innerHTML = `${totalQuantity} <span>Items</span>`;
     }
     
   
@@ -78,10 +78,10 @@ export default class CheckoutProcess {
       const taxation = document.querySelector(".tax");
       const orderTotal = document.querySelector(".order__total");
 
-      subtotal.innerText = `subtotal (Cart Total): $ ${total}`;
-      shipping.innerText = `Shipping Cost: $${ship}`;
-      taxation.innerText = `Tax: $${tax}`;
-      orderTotal.innerText = `Order Total: $${grossTotal}`;
+      subtotal.innerHTML = `<span>subtotal</span> (Cart Total)<span>:</span> $ ${total}`;
+      shipping.innerHTML = `<span>Shipping Cost:</span> $${ship}`;
+      taxation.innerHTML = `<span>Tax:</span> $${tax}`;
+      orderTotal.innerHTML = `<span>Order Total:</span> $${grossTotal}`;
       console.log(this.itemTotal);
       console.log(this.shipping);
       console.log(this.tax);

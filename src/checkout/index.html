@@ -27,7 +27,16 @@
           class="checkout-form"
           action="https://httpbin.org/post"
           method="POST"
-        > --><form>
+        > -->
+        <ul class="checkout-summary">
+          <h2>Order Summary</h2>
+          <li class="item__count"></li>
+          <li class="sub__total"></li>
+          <li class="shipping"></li>
+          <li class="tax"></li>
+          <li class="order__total"></li>
+        </ul>
+        <form>
           <h2>Shipping Address</h2>
           <label for="name">Name <input type="text" name="firstName" id="firstName" required /></label>
           <label for="lastName">Last Name<input type="text" name="lastName" id="lastName" required /></label>
@@ -48,14 +57,6 @@
           
           <button type="submit" class="button">Place Order</button>
         </form>
-        <ul class="checkout-summary">
-          <h2>Order Summary</h2>
-          <li class="item__count"></li>
-          <li class="sub__total"></li>
-          <li class="shipping"></li>
-          <li class="tax"></li>
-          <li class="order__total"></li>
-        </ul>
       </section>      
     </main>
 
