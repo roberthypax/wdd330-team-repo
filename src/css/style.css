@@ -288,7 +288,7 @@ form {
     margin: 2em auto;
     height: 2em;
     font-size: 1.1rem;
-    min-width: 300px;
+    min-width: 250px;
   }
 
   .checkout-summary{
@@ -326,6 +326,7 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px;
   }
 }
 
