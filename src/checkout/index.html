@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/main.js" type="module"></script>
+    <script src="../js/checkout.js" type="module"></script>
   </head>
 
   <body>
@@ -18,7 +19,44 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+        <ul class="product-list"></ul>
       </section>
+      
+      <section class="checkout">
+        <!-- <form
+          class="checkout-form"
+          action="https://httpbin.org/post"
+          method="POST"
+        > --><form>
+          <h2>Shipping Address</h2>
+          <label for="name">Name <input type="text" name="firstName" id="firstName" required /></label>
+          <label for="lastName">Last Name<input type="text" name="lastName" id="lastName" required /></label>
+          
+          <label for="address">Address<input type="text" name="address" id="address" required /></label>
+          
+          <label for="city">City<input type="text" name="city" id="city" required /></label>
+          
+          <label for="state">State<input type="text" name="state" id="state" required /></label>
+          
+          <label for="zip">Zip<input type="text" name="zip" id="zip" required /></label>
+          
+          <label for="card">Credit Card<input type="number" name="card" id="card" required /></label>
+          
+          <label for="exp">Expiration<input type="text" name="exp" id="exp" required /></label>
+          
+          <label for="cvv">CVV<input type="number" name="cvv" id="cvv" required /></label>
+          
+          <button type="submit" class="button">Place Order</button>
+        </form>
+        <ul class="checkout-summary">
+          <h2>Order Summary</h2>
+          <li class="item__count"></li>
+          <li class="sub__total"></li>
+          <li class="shipping"></li>
+          <li class="tax"></li>
+          <li class="order__total"></li>
+        </ul>
+      </section>      
     </main>
 
     <footer>&copy;NOT a real business</footer>

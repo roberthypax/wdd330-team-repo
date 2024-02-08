@@ -98,12 +98,22 @@ export default class ShoppingCart {
         setLocalStorage("so-cart", newCart);
         this.render; 
     }
+
+    // checkout(){
+    //   let totalQuantity = this.cartItems.reduce(function(total, currentItem) {
+    //     return total + currentItem.quantity;
+    //   }, 0);
+    //   console.log(totalQuantity);
+    //   this.itemCount.innerText = `${totalQuantity} Items`;
+    // }
+
     render() {
         renderListWithTemplate(CardTemplate, this.element, this.cartItems, "afterBegin", true);
         //document.querySelector(".cart-total").innerHTML = "Total $" + this.cartTotal;
         //console.log(this.cartItems);
         // Call the function to set up the event listeners
         this.addOrRemove(this.cartItems);
-        this.total.innerText = `Total Price: $${(parseFloat(this.overAllPayment)).toFixed(2)}`;  
+        // this.checkout();
+        this.total.innerText = `Subtotal: $${(parseFloat(this.overAllPayment)).toFixed(2)}`;  
     }
 }
