@@ -231,9 +231,10 @@ button {
 .product-grid img {
   width: 90px;
 }
-.cart__reduce, .cart__add{
-  padding: .5em;
-  margin: .2em;
+.cart__reduce,
+.cart__add {
+  padding: 0.5em;
+  margin: 0.2em;
 }
 .cart-buttons {
   display: flex;
@@ -263,52 +264,52 @@ form {
   max-width: 500px;
   min-width: 300px;
   margin: 0 auto;
-  padding: 2em 2em 1em 2em;  
+  padding: 2em 2em 1em 2em;
   border-radius: 5px;
   background-color: var(--tertiary-color);
   margin-bottom: 3em;
-  }
+}
 
-  label {
-    display: block;
-    margin: 0.5rem 0;
-  }
-  
-  input{
-    margin: 10px 0 0 0;
-    width: 100%;
-    min-height: 2em;
-    background-color: var(--light-grey);
-    border: 1px solid #0a0a23;
-    color: #0a0a23;
-  }
+label {
+  display: block;
+  margin: 0.5rem 0;
+}
 
-  button[type="submit"] {
-    display: block;
-    margin: 2em auto;
-    height: 2em;
-    font-size: 1.1rem;
-    min-width: 250px;
-  }
+input {
+  margin: 10px 0 0 0;
+  width: 100%;
+  min-height: 2em;
+  background-color: var(--light-grey);
+  border: 1px solid #0a0a23;
+  color: #0a0a23;
+}
 
-  .checkout-summary{
-    border: 10px solid var(--dark-grey);
-    width: fit-content;
-    padding: 1em;
-    list-style: none;
-    margin: 20px auto;
-  }
-  .checkout-summary span{
-    font-weight: bold;
-  }
+button[type="submit"] {
+  display: block;
+  margin: 2em auto;
+  height: 2em;
+  font-size: 1.1rem;
+  min-width: 250px;
+}
 
-  .checkout-summary li{
-    padding: .5em;
-    border-bottom: 1px solid black ;
-  }
-  .checkout-summary > li:last-of-type{
-    border-bottom: 2px dashed black;
-  }
+.checkout-summary {
+  border: 10px solid var(--dark-grey);
+  width: fit-content;
+  padding: 1em;
+  list-style: none;
+  margin: 20px auto;
+}
+.checkout-summary span {
+  font-weight: bold;
+}
+
+.checkout-summary li {
+  padding: 0.5em;
+  border-bottom: 1px solid black;
+}
+.checkout-summary > li:last-of-type {
+  border-bottom: 2px dashed black;
+}
 
 @media screen and (min-width: 500px) {
   body {
@@ -322,7 +323,7 @@ form {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
-  .checkout{
+  .checkout {
     display: flex;
     align-items: center;
     justify-content: center;

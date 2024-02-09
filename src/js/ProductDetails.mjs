@@ -54,11 +54,9 @@ export default class ProductDetails {
             let overAllPayment = 0;
             cart.forEach(item => {
               const totalForSet = (item.FinalPrice * item.quantity).toFixed(2);
-              console.log(totalForSet);
             // Add to total each iteration
               overAllPayment += parseFloat(totalForSet);
             })
-            console.log((overAllPayment).toFixed(2));
             // Save updated cart array
             setLocalStorage("so-cart", cart);
             setLocalStorage("so-cart-total", (overAllPayment).toFixed(2)); 
