@@ -19,7 +19,7 @@ export default class ExternalServices {
   //     .then((data) => data);
   //}
   async getData(category) {
-    const response = await fetch(`${baseURL}/products/search/${category}`);
+    const response = await fetch(`${baseURL}products/search/${category}`);
     const data = await convertToJson(response);
     return data.Result;
   }
@@ -27,7 +27,7 @@ export default class ExternalServices {
   async findProductById(id) {
     // const products = await this.getData();
     // return products.find((item) => item.Id === id);
-    const response = await fetch(`${baseURL}/product/${id}`)
+    const response = await fetch(`${baseURL}product/${id}`)
     const data = await convertToJson(response);
     return data.Result;
   }
@@ -41,6 +41,6 @@ export default class ExternalServices {
       body: JSON.stringify(order),
     };
     console.log('Checkout submitted!');
-    return await fetch(baseURL + "/checkout/", options).then(convertToJson);
+    return await fetch(baseURL + "checkout/", options).then(convertToJson);
   }
 }
